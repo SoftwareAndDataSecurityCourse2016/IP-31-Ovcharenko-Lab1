@@ -46,16 +46,12 @@ internal class Decryptor {
 
     private fun decryptInternal(text: String, key: String): String {
         val keyValueMap = HashMap<Char, Char>()
-
         for (i in key.indices) {
             keyValueMap.put(key[i], ALPHABET[i])
         }
 
         val result = StringBuilder()
-        for (ch in text.toCharArray()) {
-            result.append(keyValueMap[ch])
-        }
-
+        text.forEach { result.append(keyValueMap[it]) }
         return result.toString()
     }
 
